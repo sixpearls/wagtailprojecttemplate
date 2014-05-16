@@ -1,0 +1,9 @@
+*.pyc
+local.py
+dev.db
+Thumbs.db
+/.vagrant
+/static
+*.pyc
+/media
+/Vagrantfile.local
