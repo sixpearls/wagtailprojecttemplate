@@ -21,7 +21,6 @@ SQL_PARAMS = {
 #     pip install django-debug-toolbar==1.0.1
 # and uncomment the lines below.
 
-# from .base import INSTALLED_APPS, MIDDLEWARE_CLASSES
 INSTALLED_APPS = [
     # 'debug_toolbar',
 ]
