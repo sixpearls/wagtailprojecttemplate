@@ -2,9 +2,10 @@
 
 import os
 import sys
+import local
 
 if __name__ == "__main__":
     from django.core.management import execute_from_command_line
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings.%s"% sys.argv[1])
-    execute_from_command_line([sys.argv[0]] + sys.argv[2:])
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings.%s"% local.ENVIRONMENT)
+    execute_from_command_line(sys.argv)
 

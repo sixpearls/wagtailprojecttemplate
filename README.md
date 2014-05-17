@@ -45,16 +45,8 @@ If your VM is currently running, you'll then need to run `vagrant halt` followed
 Usage
 -----
 
-To use ``manage.py`` to execute scripts you must explicitly include the
-settings module to use with it, the default included settings are
-``development`` and ``production`` so to start the development server you would
-do::
+Use the ``fab`` helper(s). Just make sure to update (and deploy) the ``local.py`` file::
 
-    $ python manage.py development runserver
-
-Better yet, use the ``fab`` helper(s). Just make sure to update (and deploy) the ``local.py`` file::
-
-    $ fab manage:validate
-    $ fab serve
-    $ fab collectstatic
+    $ fab serve # launch development server from vagrant
+    $ fab collectstatic # collect static files
 

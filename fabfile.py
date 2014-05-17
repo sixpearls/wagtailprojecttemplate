@@ -11,7 +11,7 @@ if getattr(django_base_settings,'USE_HEROKU',False):
     env.run = 'heroku run python manage.py'
     import fabfiles.heroku
 else:
-    env.run = 'python manage.py %s' % local_setting.ENVIRONMENT
+    env.run = 'python manage.py '
 
 import socket
 
