@@ -13,7 +13,7 @@
     "pk": 1, 
     "model": "wagtailcore.page", 
     "fields": {
-        "title": "root", 
+        "title": "Home", 
         "numchild": 0, 
         "show_in_menus": false, 
         "live": true, 
@@ -28,7 +28,7 @@
         "owner": null, 
         "path": "0001", 
         "url_path": "/", 
-        "slug": "root"
+        "slug": "home"
     }
 }
 ]

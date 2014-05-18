@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{ self.title }} | {{ block.super }}{% endblock %}
+{% block title %}{% if self.seo_title %}{{ self.seo_title %}{% else %}{{ self.title }}{% endif %} - {{ block.super }}{% endblock %}
 
 {% block content %}
 {% endblock %}
