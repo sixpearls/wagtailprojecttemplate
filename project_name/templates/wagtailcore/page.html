@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}{% if self.seo_title %}{{ self.seo_title %}{% else %}{{ self.title }}{% endif %} - {{ block.super }}{% endblock %}
 
+{% load image_tags pageurl %}
+
+{% block extra_body %}class="{{ self.title }} {{ self.content_type.app_label }} {{ self.content_type.model }}"{% endblock %}
+
 {% block content %}
 {% endblock %}
