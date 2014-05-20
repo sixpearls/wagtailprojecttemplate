@@ -3,9 +3,10 @@
 
 from fabric.contrib.console import confirm
 from fabric.api import abort, env, local, settings, task
-import {{ project_name }}.settings.base as django_base_settings 
 import os
 import local as local_setting
+
+django_base_settings = __import__('Angelina.settings.%s' % local_setting.ENVIRONMENT, fromlist=[''])
 
 if getattr(django_base_settings,'USE_HEROKU',False):
     env.run = 'heroku run python manage.py'
@@ -60,6 +61,14 @@ def pubserver(port='8000'):
 @task
 def serve(): #within vagrant
     manage('runserver 0.0.0.0:8000')
+
+@task
+def shell():
+    """ Run shell_plus if able, otherwise shell """
+    if 'django_extensions' in django_base_settings.INSTALLED_APPS:
+        manage('shell_plus')
+    else:
+        manage('shell')
 ########## END HELPERS
 
 
