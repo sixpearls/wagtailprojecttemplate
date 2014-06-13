@@ -27,6 +27,8 @@ DATABASES = {
     "default": local.SQL_PARAMS
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # Uncomment below to setup ElasticSearch
 # WAGTAILSEARCH_BACKENDS = {
 #     'default': {
@@ -45,7 +47,7 @@ INSTALLED_APPS += (
 import djcelery
 djcelery.setup_loader()
 
-BROKER_URL = 'redis://'
+BROKER_URL = 'django://'
 CELERY_SEND_TASK_ERROR_EMAILS = True
 CELERYD_LOG_COLOR = False
 
