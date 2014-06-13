@@ -38,16 +38,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # }
 
 INSTALLED_APPS += (
-    'djcelery',
-    'kombu.transport.django',
-    'gunicorn',    
+    # 'kombu.transport.django', # a messaging service that can be used with celery
+    # 'gunicorn', # a server service
 )
-
-# CELERY SETTINGS
-import djcelery
-djcelery.setup_loader()
-
-BROKER_URL = 'django://'
-CELERY_SEND_TASK_ERROR_EMAILS = True
-CELERYD_LOG_COLOR = False
-
