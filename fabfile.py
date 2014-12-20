@@ -6,7 +6,7 @@ from fabric.api import abort, env, local, settings, task
 import os
 import local as local_setting
 
-django_base_settings = __import__('Angelina.settings.%s' % local_setting.ENVIRONMENT, fromlist=[''])
+django_base_settings = __import__('{{ project_name }}.settings.%s' % local_setting.ENVIRONMENT, fromlist=[''])
 
 if getattr(django_base_settings,'USE_HEROKU',False):
     env.run = 'heroku run python manage.py'

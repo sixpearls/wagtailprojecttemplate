@@ -70,7 +70,7 @@ su - vagrant -c "mkdir -p /home/vagrant/.pip_download_cache"
 # fi
 
 # postgresql setup for project
-createdb -Upostgres $DB_NAME
+# createdb -Upostgres $DB_NAME
 
 # dependencies for lxml (for HTML whitelisting)
 apt-get install -y libxml2-dev libxslt-dev
@@ -86,4 +86,4 @@ echo "workon $VIRTUALENV_NAME" >> /home/vagrant/.bashrc
 chmod a+x $PROJECT_DIR/manage.py
 
 # Django project setup
-su - vagrant -c "source $VIRTUALENV_DIR/bin/activate && cd $PROJECT_DIR && python manage.py development syncdb --noinput --all && python manage.py development migrate --fake --noinput"
+su - vagrant -c "source $VIRTUALENV_DIR/bin/activate && cd $PROJECT_DIR && python manage.py syncdb --noinput --all && python manage.py migrate --fake --noinput"
