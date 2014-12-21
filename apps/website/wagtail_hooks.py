@@ -1,4 +1,4 @@
-from wagtail.wagtailadmin import hooks
+from wagtail.wagtailcore import hooks
 from django.utils.html import format_html, format_html_join
 from django.conf import settings
 
