@@ -111,7 +111,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     # "django.contrib.sites", 
 
-    'south',
     'compressor',
     'taggit',
     'modelcluster',

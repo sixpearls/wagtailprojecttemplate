@@ -72,9 +72,6 @@ su - vagrant -c "mkdir -p /home/vagrant/.pip_download_cache"
 # postgresql setup for project
 # createdb -Upostgres $DB_NAME
 
-# dependencies for lxml (for HTML whitelisting)
-apt-get install -y libxml2-dev libxslt-dev
-
 # virtualenv setup for project
 su - vagrant -c "/usr/local/bin/virtualenv $VIRTUALENV_DIR && \
     echo $PROJECT_DIR > $VIRTUALENV_DIR/.project && \
