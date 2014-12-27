@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}{% if self.seo_title %}{{ self.seo_title %}{% else %}{{ self.title }}{% endif %} - {{ block.super }}{% endblock %}
+{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} - {{ block.super }}{% endblock %}
 
-{% load image_tags pageurl %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
 {% block extra_body %} class="{{ self.slug }} {{ self.content_type.app_label }} {{ self.content_type.model }}"{% endblock %}
 
