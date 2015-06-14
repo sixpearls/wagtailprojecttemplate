@@ -1,3 +1,4 @@
+{% if False %}
 {{ project_name|title }} with Wagtail
 =====================================
 
@@ -20,13 +21,15 @@ We recommend running {{ project_name }} on wagtail in a virtual machine using Va
 
 Run the following commands:
 
-    django-admin.py startproject --template=https://github.com/sixpearls/wagtailprojecttemplate/zipball/master -evf,py,rst,md <project_name>
+    django-admin.py startproject --template=https://github.com/sixpearls/wagtailprojecttemplate/zipball/master -evf,py,rst,md,sh <project_name>
     cd {{ project_name }}
     vagrant up
     vagrant ssh
       (then, within the SSH session:)
     fab manage:createsuperuser
     fab serve
+
+
 
 This will make the app accessible on the host machine as http://localhost:8111/ - you can access the Wagtail admin interface at http://localhost:8111/admin/ . Begin adding pages at http://localhost:8111/admin/pages/ The codebase is located on the host machine, exported to the VM as a shared folder; code editing and Git operations will generally be done on the host.
 
@@ -49,4 +52,4 @@ Use the ``fab`` helper(s). Just make sure to update (and deploy) the ``local.py`
 
     $ fab serve # launch development server from vagrant
     $ fab collectstatic # collect static files
-
+{% endif %}
