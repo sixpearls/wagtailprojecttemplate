@@ -1,4 +1,4 @@
-from {{ project_name }}.settings.base import *
+from .base import *
 
 CACHES = {
     'default': {

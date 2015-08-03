@@ -1,11 +1,8 @@
-import os, sys, imp
+import os, sys
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'lib'))
-
-local = imp.load_source('local',os.path.join(PROJECT_ROOT,'local.py'))
-SECRET_KEY = local.SECRET_KEY
 
 # Put your name
 MANAGERS = ADMINS = [ ('admin', 'admin@example.com'),]
@@ -70,11 +67,11 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-) + local.MIDDLEWARE_CLASSES
+)
 
 TEMPLATE_DIRS = [
     os.path.join(PROJECT_ROOT, "{{ project_name }}/templates"),
-] + local.TEMPLATE_DIRS
+]
 
 
 ROOT_URLCONF = "{{ project_name }}.urls"
@@ -131,7 +128,7 @@ INSTALLED_APPS = [
 
     'website',
 
-] + local.INSTALLED_APPS
+]
 
 SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',
@@ -145,6 +142,13 @@ EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = ""
 EMAIL_HOST_PASSWORD = ""
 
 WAGTAIL_SITE_NAME = '{{ project_name|lower }}'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '{{ project_name|lower }}',
+    }
+}
 
 # django-compressor settings
 COMPRESS_PRECOMPILERS = (

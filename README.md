@@ -38,7 +38,7 @@ This will make the app accessible on the host machine as http://localhost:8111/ 
 The above setup is all you need for trying out the demo site and building Wagtail-powered sites. To develop Wagtail itself, you'll need a working copy of [the Wagtail codebase](https://github.com/torchbox/wagtail) alongside your demo site, shared with your VM so that it is picked up instead of the packaged copy of Wagtail. From the location where you cloned wagtaildemo:
 
     git clone https://github.com/torchbox/wagtail.git
-    cd wagtaildemo
+    cd {{ project_name }}
     cp Vagrantfile.local.example Vagrantfile.local
         (edit Vagrantfile.local to specify the path to the wagtail codebase, if required)
         (edit the rest of local.py as appropriate, especially uncomment the lines from 'import sys' onward )
@@ -48,8 +48,20 @@ If your VM is currently running, you'll then need to run `vagrant halt` followed
 Usage
 -----
 
-Use the ``fab`` helper(s). Just make sure to update (and deploy) the ``local.py`` file::
+Use the ``fab`` helper(s) for projects compatible with Fabric. Just make sure to update (and deploy) the ``local.py`` file::
 
     $ fab serve # launch development server from vagrant
     $ fab collectstatic # collect static files
+
+When deploying to heroku, use (from the HOST system)::
+
+    $ git init
+    $ git add -A
+    $ git commit -m "First commit!"
+    $ heroku create
+    $ git push heroku master
+    $ heroku config:set SECRET_KEY=`openssl rand -base64 32`
+    $ heroku config:set PYTHONHASHSEED=random
+
 {% endif %}
+
