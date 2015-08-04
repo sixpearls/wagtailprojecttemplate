@@ -1,5 +1,7 @@
 import os, sys
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'lib'))

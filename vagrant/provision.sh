@@ -24,6 +24,11 @@ su - vagrant -c "echo $PROJECT_DIR > $VIRTUALENV_DIR/.project"
 # Install PIP requirements
 su - vagrant -c "$PIP install -r $PROJECT_DIR/requirements.txt -f /home/vagrant/wheelhouse"
 
+# Add a couple of aliases to manage.py into .bashrc
+cat << EOF >> /home/vagrant/.bashrc
+export PYTHONPATH=$PROJECT_DIR
+export DJANGO_SETTINGS_MODULE=$PROJECT_NAME.settings.development
+export SECRET_KEY=`openssl rand -base64 32`
 
 # Set execute permissions on manage.py as they get lost if we build from a zip file
 chmod a+x $PROJECT_DIR/manage.py
@@ -32,11 +37,6 @@ chmod a+x $PROJECT_DIR/manage.py
 su - vagrant -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
                  $PYTHON $PROJECT_DIR/manage.py loaddata $PROJECT_DIR/first_site_page.json && \
                  $PYTHON $PROJECT_DIR/manage.py update_index"
-
-# Add a couple of aliases to manage.py into .bashrc
-cat << EOF >> /home/vagrant/.bashrc
-export PYTHONPATH=$PROJECT_DIR
-export DJANGO_SETTINGS_MODULE=$PROJECT_NAME.settings.development
 
 alias dj="django-admin"
 alias djrun="dj runserver 0.0.0.0:8000"

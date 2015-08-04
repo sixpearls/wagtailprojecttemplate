@@ -1,3 +1,1 @@
-# Copy image files into media folder
-mkdir -p media/original_images
-cp demo/fixtures/images/* media/original_images/
+# A post compile hook

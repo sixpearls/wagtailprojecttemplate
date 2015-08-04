@@ -1,8 +1,5 @@
-import os, imp
+import os
 from .base import *
-
-local = imp.load_source('local',os.path.join(PROJECT_ROOT,'local.py'))
-SECRET_KEY = local.SECRET_KEY
 
 INSTALLED_APPS += [
     'django_extensions',

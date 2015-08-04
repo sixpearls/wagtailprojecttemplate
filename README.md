@@ -1,6 +1,6 @@
-{% if False %}
 {{ project_name|title }} with Wagtail
 =====================================
+{% if False %}
 
 You should write some docs, it's good for the soul.
 
@@ -21,7 +21,7 @@ We recommend running {{ project_name }} on wagtail in a virtual machine using Va
 
 Run the following commands:
 
-    django-admin.py startproject --template=https://github.com/sixpearls/wagtailprojecttemplate/zipball/master -evf,py,rst,md,sh <project_name>
+    django-admin.py startproject --template=https://github.com/sixpearls/wagtailprojecttemplate/zipball/master -evf,py,rst,md,sh --name=Procfile <project_name>
     cd {{ project_name }}
     vagrant up
     vagrant ssh
@@ -39,12 +39,13 @@ The above setup is all you need for trying out the demo site and building Wagtai
 
     git clone https://github.com/torchbox/wagtail.git
     cd {{ project_name }}
-    cp Vagrantfile.local.example Vagrantfile.local
+    mv Vagrantfile.local.example Vagrantfile.local
         (edit Vagrantfile.local to specify the path to the wagtail codebase, if required)
         (edit the rest of local.py as appropriate, especially uncomment the lines from 'import sys' onward )
     
 If your VM is currently running, you'll then need to run `vagrant halt` followed by `vagrant up` for the changes to take effect.
 
+{% endif %}
 Usage
 -----
 
@@ -56,12 +57,11 @@ Use the ``fab`` helper(s) for projects compatible with Fabric. Just make sure to
 When deploying to heroku, use (from the HOST system)::
 
     $ git init
-    $ git add -A
+    $ git add .
     $ git commit -m "First commit!"
     $ heroku create
     $ git push heroku master
     $ heroku config:set SECRET_KEY=`openssl rand -base64 32`
     $ heroku config:set PYTHONHASHSEED=random
-
-{% endif %}
+    $ heroku config:set DJANGO_SETTINGS_MODULE={{ project_name }}.settings.heroku
 
