@@ -27,7 +27,7 @@ MEDIA_URL = '%suploads/' % MEDIA_URL_PREFIX
 
 # These are for site static media (e.g. CSS and JS)
 # This one is where static content is collected to.
-STATIC_ROOT = os.path.join(MEDIA_ROOT_PREFIX, 'static')    
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')    
 STATIC_URL = "%sstatic/" % MEDIA_URL_PREFIX
 
 STATICFILES_DIRS = [
